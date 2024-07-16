@@ -307,7 +307,8 @@ class MainGearLength(om.ExplicitComponent):
         num_eng = options.get_val(Aircraft.Engine.NUM_ENGINES)[0]
         num_wing_eng = options.get_val(Aircraft.Engine.NUM_WING_ENGINES)[0]
 
-        y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0][0]
+        # y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0][0]
+        y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0]
 
         # TODO: high engine-count configuation.
         y_eng_aft = 0
