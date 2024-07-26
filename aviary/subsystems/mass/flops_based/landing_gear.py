@@ -289,7 +289,7 @@ class MainGearLength(om.ExplicitComponent):
                          val=np.zeros(num_engine_type))
         if num_wing_engines > 0:
             add_aviary_input(self, Aircraft.Engine.WING_LOCATIONS,
-                         val=np.zeros((int(num_wing_engines[0]/2))))
+                         val=np.zeros((num_engine_type, int(num_wing_engines[0]/2))))
         else:
             add_aviary_input(self, Aircraft.Engine.WING_LOCATIONS,
                          val=[[0]])        
@@ -306,9 +306,7 @@ class MainGearLength(om.ExplicitComponent):
         # TODO temp using first engine, multi-engine not supported
         num_eng = options.get_val(Aircraft.Engine.NUM_ENGINES)[0]
         num_wing_eng = options.get_val(Aircraft.Engine.NUM_WING_ENGINES)[0]
-
-        # y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0][0]
-        y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0]
+        y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0][0]
 
         # TODO: high engine-count configuation.
         y_eng_aft = 0
@@ -347,7 +345,6 @@ class MainGearLength(om.ExplicitComponent):
         # TODO temp using first engine, multi-engine not supported
         num_eng = options.get_val(Aircraft.Engine.NUM_ENGINES)[0]
         num_wing_eng = options.get_val(Aircraft.Engine.NUM_WING_ENGINES)[0]
-
         y_eng_fore = inputs[Aircraft.Engine.WING_LOCATIONS][0][0]
         y_eng_aft = 0
 
